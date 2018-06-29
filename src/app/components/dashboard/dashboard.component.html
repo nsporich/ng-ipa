@@ -1,14 +1,71 @@
 <mat-card>
-  Material.io - dashboard works!
+  <form class="client-search">
+    <mat-form-field class="search-full-width">
+      <input type="text" placeholder="Select a client..." aria-label="Number" matInput [formControl]="clientControl" [matAutocomplete]="auto">
+      <mat-autocomplete #auto="matAutocomplete">
+        <mat-option *ngFor="let option of filteredClients | async" [value]="option">
+          {{option}}
+        </mat-option>
+      </mat-autocomplete>
+    </mat-form-field>
+  </form>
 </mat-card>
 
-<form class="client-search">
-  <mat-form-field class="search-full-width">
-    <input type="text" placeholder="Select a client..." aria-label="Number" matInput [formControl]="clientControl" [matAutocomplete]="auto">
-    <mat-autocomplete #auto="matAutocomplete">
-      <mat-option *ngFor="let option of filteredClients | async" [value]="option">
-        {{option}}
-      </mat-option>
-    </mat-autocomplete>
-  </mat-form-field>
-</form>
+<mat-table [dataSource]="clients" class="mat-elevation-z8">
+  <!-- Position Column -->
+  <ng-container matColumnDef="id">
+    <mat-header-cell *matHeaderCellDef> id </mat-header-cell>
+    <mat-cell *matCellDef="let client"> {{client.id}} </mat-cell>
+  </ng-container>
+
+  <!-- Name Column -->
+  <ng-container matColumnDef="companyName">
+    <mat-header-cell *matHeaderCellDef> Company Name </mat-header-cell>
+    <mat-cell *matCellDef="let client"> {{client.CompanyName}} </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="alias">
+    <mat-header-cell *matHeaderCellDef> Alias </mat-header-cell>
+    <mat-cell *matCellDef="let client"> {{client.Alias}} </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="appleCertificate">
+    <mat-header-cell *matHeaderCellDef> Apple Certificate </mat-header-cell>
+    <mat-cell *matCellDef="let client"> {{client.AppleCertificate}} </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="activationName">
+    <mat-header-cell *matHeaderCellDef> Activation Name </mat-header-cell>
+    <mat-cell *matCellDef="let client"> {{client.ActivationName}} </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="activationCode">
+    <mat-header-cell *matHeaderCellDef> Activation Code </mat-header-cell>
+    <mat-cell *matCellDef="let client"> {{client.ActivationCode}} </mat-cell>
+  </ng-container>
+
+  <!-- <ng-container matColumnDef="encryptedName">
+    <mat-header-cell *matHeaderCellDef> Encrypted Name </mat-header-cell>
+    <mat-cell *matCellDef="let client"> {{client.EncryptedName}} </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="encryptedCode">
+    <mat-header-cell *matHeaderCellDef> Encrypted Code </mat-header-cell>
+    <mat-cell *matCellDef="let client"> {{client.EncryptedCode}} </mat-cell>
+  </ng-container> -->
+
+  <ng-container matColumnDef="profileFolder">
+    <mat-header-cell *matHeaderCellDef> Profile Folder </mat-header-cell>
+    <mat-cell *matCellDef="let client"> {{client.ProfileFolder}} </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="active">
+    <mat-header-cell *matHeaderCellDef> Active </mat-header-cell>
+    <mat-cell *matCellDef="let client"> {{client.Active}} </mat-cell>
+  </ng-container>
+
+  <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+  <mat-row *matRowDef="let row; columns: displayedColumns;"
+    (click)="onRowClicked(row)">
+  </mat-row>
+</mat-table>

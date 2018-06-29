@@ -6,7 +6,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { FormsModule } from '@angular/forms';
 
 //MaterialModules
-import { MatCardModule, MatFormFieldModule, MatInputModule, MatAutocompleteModule } from '@angular/material';
+import { MaterialModule } from './material.module';
 
 //Services
 import { ClientService } from './services/client.service';
@@ -14,6 +14,7 @@ import { ClientService } from './services/client.service';
 //Components
 import { AppComponent } from './app.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
+
 
 @NgModule({
   declarations: [
@@ -23,13 +24,10 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
   imports: [
     BrowserModule,
     HttpModule,
-    BrowserAnimationsModule,
     ReactiveFormsModule,
     FormsModule,
-    MatCardModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatAutocompleteModule
+    MaterialModule,
+    BrowserAnimationsModule
   ],
   providers: [ClientService],
   bootstrap: [AppComponent]
