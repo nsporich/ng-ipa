@@ -1,9 +1,42 @@
-.client-search {
-    min-width: 150px;
-    max-width: 500px;
-    width: 100%;
-  }
-  
-  .search-full-width {
-    width: 100%;
-  }
+table {
+  width: 100%;
+}
+
+.mat-form-field {
+  font-size: 14px;
+  margin-right: 16px;
+}
+
+.mat-row {
+  cursor: pointer;
+}
+
+.mat-row:hover {
+  background-color: rgba(211, 211, 211, 0.466);
+}
+
+.mat-cell:nth-child(1),
+.mat-header-cell:nth-child(1) {
+  flex: 0 0 15%;
+}
+
+.mat-cell:nth-child(2),
+.mat-header-cell:nth-child(2) {
+  flex: 0 0 20%;
+}
+
+.mat-cell:nth-child(3),
+.mat-header-cell:nth-child(3) {
+  flex: 0 0 20%;
+}
+
+.menu-form {
+  flex-grow: 1;
+}
+.menu-button {
+  flex-grow: 0;
+}
+
+.mat-toolbar {
+  background-color: white;
+}

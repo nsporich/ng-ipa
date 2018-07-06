@@ -1,11 +1,13 @@
 import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
-import { map } from "rxjs/operators";
+import { map, tap } from "rxjs/operators";
+import { Observable } from 'rxjs';
+
 
 export interface Client {
   id: number,
-  CompanyName: string,
   Alias: string,
+  CompanyName: string,
   AppleCertificate: string,
   ActivationName: string,
   ActivationCode: string,
@@ -27,4 +29,18 @@ export class ClientService {
       .pipe(map(res => res.json()));
   }
 
+
+  updateClient(client: Client): Observable<Client[]> {
+    return this.http.put('api/clients/' + client.id, client)
+      .pipe(
+        map(x => <Client[]>x.json())
+      );
+  }
+
+  newClient(data: Client): Observable<Client[]> {
+    return this.http.post('api/clients', data)
+      .pipe(
+        map(x => <Client[]>x.json())
+      );;
+  }
 }

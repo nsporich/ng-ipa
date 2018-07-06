@@ -1,8 +1,7 @@
 import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
-import { FormControl } from '@angular/forms';
-import { Observable } from 'rxjs';
-import { map, startWith, filter, debounceTime } from 'rxjs/operators';
 import { ClientService, Client } from '../../services/client.service';
+import { MatTableDataSource, MatDialog, Sort } from '@angular/material';
+import { ClientDialogComponent } from '../client-dialog/client-dialog.component';
 
 
 @Component({
@@ -13,55 +12,62 @@ import { ClientService, Client } from '../../services/client.service';
 export class DashboardComponent implements OnInit {
 
   clients: Client[];
-  clientControl = new FormControl();
-  filteredClients: Observable<any[]>;
+  dataSource = new MatTableDataSource();
+  displayedColumns: string[] = ['alias', 'companyName', 'appleCertificate', 'activationName', 'activationCode', 'profileFolder', 'active'];
 
-  //Table Columns
-  displayedColumns: string[] = ['id', 'alias', 'companyName', 'appleCertificate', 'activationName', 'activationCode', 'profileFolder', 'active'];
-
-  
-  // TEST_DATA: Client[] = [
-  //   {id: 1, CompanyName:"Casamba, Inc.", Alias:"casqa", AppleCertificate:"Casamba, Inc.", ActivationName:"casqaPro", ActivationCode:"casqa2018", EncryptedName:"", EncryptedCode:"", ProfileFolder:"Casamba", Active: true}, 
-  //   {id: 2, CompanyName:"Adams County", Alias:"ACMH", AppleCertificate:"Adams County Medical", ActivationName:"ACMHPro", ActivationCode:"ACMH2018", EncryptedName:"", EncryptedCode:"", ProfileFolder:"ACMH", Active: true},
-  //   {id: 3, CompanyName:"EnduraCare", Alias:"Endura", AppleCertificate:"Casamba, Inc.", ActivationName:"EnduraPro", ActivationCode:"Endura2018", EncryptedName:"", EncryptedCode:"", ProfileFolder:"Casamba", Active: true},
-  //   {id: 4, CompanyName:"HealthPRO", Alias:"Heritage", AppleCertificate:"Heritage", ActivationName:"HeritagePro", ActivationCode:"Heritage2018", EncryptedName:"", EncryptedCode:"", ProfileFolder:"Heritage", Active: true},
-  //   {id: 5, CompanyName:"Rehab Care", Alias:"Kindred", AppleCertificate:"Casamba, Inc.", ActivationName:"KindredPro", ActivationCode:"Kindred2018", EncryptedName:"", EncryptedCode:"", ProfileFolder:"Casamba", Active: true},
-  //   {id: 6, CompanyName:"SynerTx", Alias:"SynerTx", AppleCertificate:"Casamba, Inc.", ActivationName:"SynerTxPro", ActivationCode:"SynerTx2018", EncryptedName:"", EncryptedCode:"", ProfileFolder:"Casamba", Active: true}
-  // ]
-
-  
   constructor(
     private ClientService: ClientService,
+    public dialog: MatDialog,
     private cdr: ChangeDetectorRef
-  ) { }
+  ) {}
 
   ngOnInit() {
     this.getAllClients();
   }
   
+  // OnInit GET Request
   getAllClients() {
     this.ClientService.getAllClients().subscribe(clients => {
       this.clients = clients;
-
-      this.filteredClients = this.clientControl.valueChanges
-      .pipe(
-        startWith(''),
-        debounceTime(300),
-        map(value => this._filter(value))
-      );
+      this.dataSource = new MatTableDataSource(this.clients);
     });
   }
 
-  //Filter Function
-  private _filter(value: string): string[] {
-    const filterValue = value.toLowerCase();
-    return this.clients
-        .filter(client => client.CompanyName ? client.CompanyName.toLowerCase().includes(filterValue) : false)
-        .map(client => client.CompanyName);
+
+  // Filter
+  applyFilter(filterValue: string) {
+    this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 
+  // Click Functions
   onRowClicked(row) {
-    console.log('Row clicked: ', row);
+    const dialogRef = this.dialog.open(ClientDialogComponent, {
+      data: {client: { ...row }, isNew: false}
+    });
+    dialogRef.afterClosed().subscribe(modalResult => {
+      if (modalResult) {
+        modalResult.obs$.subscribe(clients => {
+          row = Object.assign(row, modalResult.row);
+          this.cdr.detectChanges();
+        });
+      }
+    });
+  }
+
+  onClickNew() {
+    let row = {};
+    const dialogRef = this.dialog.open(ClientDialogComponent, {
+      data: {client: row, isNew: true}
+    });
+    dialogRef.afterClosed().subscribe(clients$ => {
+      if (clients$) {
+        clients$.subscribe(clients => {
+          this.clients = clients;
+          this.cdr.detectChanges();
+        });
+      }
+    });
   }
 
 }
+

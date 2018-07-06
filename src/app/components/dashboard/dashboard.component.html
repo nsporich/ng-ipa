@@ -1,33 +1,29 @@
-<mat-card>
-  <form class="client-search">
-    <mat-form-field class="search-full-width">
-      <input type="text" placeholder="Select a client..." aria-label="Number" matInput [formControl]="clientControl" [matAutocomplete]="auto">
-      <mat-autocomplete #auto="matAutocomplete">
-        <mat-option *ngFor="let option of filteredClients | async" [value]="option">
-          {{option}}
-        </mat-option>
-      </mat-autocomplete>
-    </mat-form-field>
-  </form>
-</mat-card>
+<mat-toolbar>
+  <mat-form-field class="menu-form">
+    <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+  </mat-form-field>
+  <button mat-raised-button color="primary" class="menu-button" 
+  (click)="onClickNew()">Create New</button>
+</mat-toolbar>
 
-<mat-table [dataSource]="clients" class="mat-elevation-z8">
-  <!-- Position Column -->
-  <ng-container matColumnDef="id">
-    <mat-header-cell *matHeaderCellDef> id </mat-header-cell>
+<table mat-table [dataSource]="sortedData ? sortedData : dataSource" matSort (matSortChange)="sortData($event)" matSortActive="alias" matSortDirection="asc" class="mat-elevation-z8">
+
+  <!-- <ng-container matColumnDef="id">
+    <mat-header-cell *matHeaderCellDef > id </mat-header-cell>
     <mat-cell *matCellDef="let client"> {{client.id}} </mat-cell>
-  </ng-container>
+  </ng-container> -->
 
-  <!-- Name Column -->
-  <ng-container matColumnDef="companyName">
-    <mat-header-cell *matHeaderCellDef> Company Name </mat-header-cell>
-    <mat-cell *matCellDef="let client"> {{client.CompanyName}} </mat-cell>
-  </ng-container>
+  
 
   <ng-container matColumnDef="alias">
     <mat-header-cell *matHeaderCellDef> Alias </mat-header-cell>
     <mat-cell *matCellDef="let client"> {{client.Alias}} </mat-cell>
   </ng-container>
+
+  <ng-container matColumnDef="companyName">
+      <mat-header-cell *matHeaderCellDef> Company Name </mat-header-cell>
+      <mat-cell *matCellDef="let client"> {{client.CompanyName}} </mat-cell>
+    </ng-container>
 
   <ng-container matColumnDef="appleCertificate">
     <mat-header-cell *matHeaderCellDef> Apple Certificate </mat-header-cell>
@@ -68,4 +64,4 @@
   <mat-row *matRowDef="let row; columns: displayedColumns;"
     (click)="onRowClicked(row)">
   </mat-row>
-</mat-table>
+</table>

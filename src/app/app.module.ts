@@ -6,7 +6,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { FormsModule } from '@angular/forms';
 
 //MaterialModules
-import { MaterialModule } from './material.module';
+import { MaterialModule } from './material/material.module';
 
 //Services
 import { ClientService } from './services/client.service';
@@ -14,12 +14,14 @@ import { ClientService } from './services/client.service';
 //Components
 import { AppComponent } from './app.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { ClientDialogComponent } from './components/client-dialog/client-dialog.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    DashboardComponent
+    DashboardComponent,
+    ClientDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -28,6 +30,9 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
     FormsModule,
     MaterialModule,
     BrowserAnimationsModule
+  ],
+  entryComponents: [
+    ClientDialogComponent
   ],
   providers: [ClientService],
   bootstrap: [AppComponent]

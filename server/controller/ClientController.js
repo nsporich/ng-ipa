@@ -6,24 +6,29 @@ var conn = require("../connection/connect")();
 //GET Routes
 var routes = function() {
   router.route('/')
-    .get(function(req, res) {
-      conn.connect().then(function() {
-        var sqlQuery = "SELECT * FROM Clients";
-        var req = new sql.Request(conn);
-        req.query(sqlQuery).then(function(recordset) {
-          res.json(recordset.recordset);
-          conn.close();
-        })
-        .catch(function(err) {
-          conn.close();
-          res.status(400).send("Error getting data");
-        })
+    .get((req, res) => {
+      this.ListAll(req, res);
+  });
+
+  ListAll = (req, res) => {
+    conn.connect().then(function() {
+      var sqlQuery = "SELECT * FROM Clients";
+      var req = new sql.Request(conn);
+      req.query(sqlQuery).then(function(recordset) {
+        res.json(recordset.recordset);
+        conn.close();
+        console.log("GET All Clients");
       })
       .catch(function(err) {
         conn.close();
         res.status(400).send("Error getting data");
-      });
-  });
+      })
+    })
+    .catch(function(err) {
+      conn.close();
+      res.status(400).send("Error getting data");
+    });
+  }
 
   router.route('/:id')
     .get(function(req, res) {
@@ -66,6 +71,7 @@ var routes = function() {
             transaction.commit().then(function() {
               conn.close();
               res.status(200).send(req.body);
+              console.log("Insert Client", req.body);
             }).catch(function(err) {
               conn.close();
               res.status(400).send("Error inserting data");
@@ -87,6 +93,7 @@ var routes = function() {
 //UPDATE Route
   router.route('/:id')
     .put(function (req, res) {
+      console.log("in put");
       var _clientID = req.params.id;
       conn.connect().then(function() {
         var transaction = new sql.Transaction(conn);
@@ -105,7 +112,9 @@ var routes = function() {
           request.execute("usp_UpdateClient").then(function() {
             transaction.commit().then(function () {
                 conn.close();
+                console.log("Update Client", req.body);
                 res.status(200).send(req.body);
+                
             }).catch(function(err) {
                 conn.close();
                 res.status(400).send("Error updating data");
@@ -135,6 +144,7 @@ var routes = function() {
           request.execute("usp_DeleteClient").then(function() {
             transaction.commit().then(function() {
               conn.close();
+              console.log("Delete Client", req.body);
               res.status(200).json("Deleted ClientID: " + _clientID);
             }).catch(function() {
               conn.close();

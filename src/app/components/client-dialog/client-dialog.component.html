@@ -1,0 +1,75 @@
+<form class="client-form" #clientForm="ngForm">
+
+  <mat-form-field class="dialog-full-width">
+    <input matInput placeholder="id" disabled required value="{{client.id}}">
+  </mat-form-field>
+
+  <mat-form-field class="dialog-full-width">
+    <input matInput required 
+      placeholder="DB Alias" 
+      [(ngModel)]="client.Alias" name="alias"
+      #alias="ngModel"
+      value="{{client.Alias}}">
+  </mat-form-field>
+
+  <mat-form-field class="dialog-full-width">
+      <input matInput required 
+        placeholder="Company Name" 
+        [(ngModel)]="client.CompanyName" name="companyName"
+        #companyName="ngModel"
+        value="{{client.CompanyName}}">
+  </mat-form-field>
+    
+  <mat-form-field class="dialog-full-width">
+      <input matInput required
+        placeholder="Apple Certificate"  
+        [(ngModel)]="client.AppleCertificate" name="appleCertificate"
+        #appleCertificate="ngModel"
+        value="{{client.AppleCertificate}}">
+  </mat-form-field>
+
+  <mat-form-field class="dialog-full-width">
+      <input matInput required 
+        placeholder="Activation Name" 
+        [(ngModel)]="client.ActivationName" name="activationName"
+        #activationName="ngModel" 
+        value="{{client.ActivationName}}">
+  </mat-form-field>
+
+  <mat-form-field class="dialog-full-width">
+      <input matInput required
+        placeholder="Activation Code"  
+        [(ngModel)]="client.ActivationCode" name="activationCode"
+        #activationCode="ngModel" 
+        value="{{client.ActivationCode}}">
+  </mat-form-field>
+
+  <mat-form-field class="dialog-full-width">
+      <input matInput 
+        placeholder="Encrypted Name" 
+        value="{{client.EncryptedName}}">
+  </mat-form-field>
+
+  <mat-form-field class="dialog-full-width">
+      <input matInput 
+        placeholder="Encrypted Code" 
+        value="{{client.EncryptedCode}}">
+  </mat-form-field>
+
+  <mat-form-field class="dialog-full-width">
+      <input matInput required 
+        placeholder="Profile Folder"
+        [(ngModel)]="client.ProfileFolder" name="profileFolder"
+        #profileFolder="ngModel"  
+        [value]="client.ProfileFolder">
+  </mat-form-field>
+
+
+  <mat-checkbox [(ngModel)]="client.Active" name="active">Active</mat-checkbox>
+
+
+  <button mat-raised-button color="primary" [disabled]="!clientForm.form.valid" (click)="onSubmit()">Submit</button>
+  <button mat-button mat-dialog-close>Cancel</button>
+  
+</form>
+

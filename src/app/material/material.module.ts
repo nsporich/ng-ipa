@@ -7,7 +7,10 @@ import {
   MatAutocompleteModule,
   MatTableModule,
   MatButtonModule,
-  MatTableDataSource
+  MatDialogModule,
+  MatToolbarModule,
+  MatCheckboxModule,
+  MatSortModule
 } from '@angular/material';
 
 @NgModule({
@@ -17,7 +20,11 @@ import {
     MatInputModule, 
     MatAutocompleteModule,
     MatTableModule,
-    MatButtonModule
+    MatButtonModule,
+    MatDialogModule,
+    MatToolbarModule,
+    MatCheckboxModule,
+    MatSortModule
   ],
   exports: [
     MatCardModule, 
@@ -25,7 +32,11 @@ import {
     MatInputModule, 
     MatAutocompleteModule,
     MatTableModule,
-    MatButtonModule
+    MatButtonModule,
+    MatDialogModule,
+    MatToolbarModule,
+    MatCheckboxModule,
+    MatSortModule
   ]
 })
 

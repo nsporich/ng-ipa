@@ -373,7 +373,7 @@
 
 <ol class="breadcrumb">
   <li>Components</li>
-  <li>DashboardComponent</li>
+  <li>ClientDialogComponent</li>
 </ol>
 
 <ul class="nav nav-tabs" role="tablist">
@@ -396,7 +396,7 @@
     <h3>File</h3>
 </p>
 <p class="comment">
-    <code>src/app/components/dashboard/dashboard.component.ts</code>
+    <code>src/app/components/client-dialog/client-dialog.component.ts</code>
 </p>
 
 
@@ -426,19 +426,19 @@
 
             <tr>
                 <td class="col-md-3">selector</td>
-                <td class="col-md-9"><code>app-dashboard</code></td>
+                <td class="col-md-9"><code>app-client-dialog</code></td>
             </tr>
 
             <tr>
                 <td class="col-md-3">styleUrls</td>
-                <td class="col-md-9"><code>dashboard.component.css</code></td>
+                <td class="col-md-9"><code>client-dialog.component.css</code></td>
             </tr>
 
 
 
             <tr>
                 <td class="col-md-3">templateUrl</td>
-                <td class="col-md-9"><code>./dashboard.component.html</code></td>
+                <td class="col-md-9"><code>./client-dialog.component.html</code></td>
             </tr>
 
 
@@ -459,17 +459,18 @@
                     <td class="col-md-4">
                         <ul class="index-list">
                             <li>
-                                <a href="#clients">clients</a>
-                            </li>
-                            <li>
-                                <a href="#dataSource">dataSource</a>
+                                <a href="#client">client</a>
                             </li>
                             <li>
                                     <span class="modifier">Public</span>
-                                <a href="#dialog">dialog</a>
+                                <a href="#data">data</a>
                             </li>
                             <li>
-                                <a href="#displayedColumns">displayedColumns</a>
+                                    <span class="modifier">Public</span>
+                                <a href="#dialogRef">dialogRef</a>
+                            </li>
+                            <li>
+                                <a href="#isNew">isNew</a>
                             </li>
                         </ul>
                     </td>
@@ -484,19 +485,16 @@
                     <td class="col-md-4">
                         <ul class="index-list">
                             <li>
-                                <a href="#applyFilter">applyFilter</a>
-                            </li>
-                            <li>
-                                <a href="#getAllClients">getAllClients</a>
-                            </li>
-                            <li>
                                 <a href="#ngOnInit">ngOnInit</a>
                             </li>
                             <li>
-                                <a href="#onClickNew">onClickNew</a>
+                                <a href="#onCancel">onCancel</a>
                             </li>
                             <li>
-                                <a href="#onRowClicked">onRowClicked</a>
+                                <a href="#onNoClick">onNoClick</a>
+                            </li>
+                            <li>
+                                <a href="#onSubmit">onSubmit</a>
                             </li>
                         </ul>
                     </td>
@@ -516,12 +514,12 @@
             <tbody>
                 <tr>
                     <td class="col-md-4">
-<code>constructor(ClientService: <a href="../injectables/ClientService.html">ClientService</a>, dialog: MatDialog, cdr: <a href="https://angular.io/api/core/ChangeDetectorRef" target="_blank">ChangeDetectorRef</a>)</code>
+<code>constructor(dialogRef: <a href="../interfaces/Client.html">MatDialogRef<ClientDialogComponent></a>, ClientService: <a href="../injectables/ClientService.html">ClientService</a>, data: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>)</code>
                     </td>
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="16" class="link-to-prism">src/app/components/dashboard/dashboard.component.ts:16</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="20" class="link-to-prism">src/app/components/client-dialog/client-dialog.component.ts:20</a></div>
                             </td>
                         </tr>
 
@@ -539,6 +537,18 @@
                                         </thead>
                                         <tbody>
                                                 <tr>
+                                                        <td>dialogRef</td>
+                                                  
+                                                        <td>
+                                                                    <code><a href="../interfaces/Client.html" target="_self" >MatDialogRef&lt;ClientDialogComponent&gt;</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            no
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
                                                         <td>ClientService</td>
                                                   
                                                         <td>
@@ -551,22 +561,10 @@
                                                     
                                                 </tr>
                                                 <tr>
-                                                        <td>dialog</td>
+                                                        <td>data</td>
                                                   
                                                         <td>
-                                                                    <code>MatDialog</code>
-                                                        </td>
-                                                  
-                                                    <td>
-                                                            no
-                                                    </td>
-                                                    
-                                                </tr>
-                                                <tr>
-                                                        <td>cdr</td>
-                                                  
-                                                        <td>
-                                                                    <code><a href="https://angular.io/api/core/ChangeDetectorRef" target="_blank" >ChangeDetectorRef</a></code>
+                                                                    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
                                                         </td>
                                                   
                                                     <td>
@@ -596,113 +594,6 @@
             <tbody>
                 <tr>
                     <td class="col-md-4">
-                        <a name="applyFilter"></a>
-                        <span class="name">
-                            <b>
-                            applyFilter
-                            </b>
-                            <a href="#applyFilter"><span class="fa fa-link"></span></a>
-                        </span>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="col-md-4">
-<code>applyFilter(filterValue: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
-                    </td>
-                </tr>
-
-
-                        <tr>
-                            <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="38" class="link-to-prism">src/app/components/dashboard/dashboard.component.ts:38</a></div>
-                            </td>
-                        </tr>
-
-
-                <tr>
-                    <td class="col-md-4">
-
-                            <div class="io-description">
-                                    <b>Parameters :</b>
-                                    <table class="params">
-                                        <thead>
-                                            <tr>
-                                                <td>Name</td>
-                                                    <td>Type</td>
-                                                <td>Optional</td>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                                <tr>
-                                                        <td>filterValue</td>
-                                                        <td>
-                                                                    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
-                                                        </td>
-                                                    
-                                                    <td>
-                                                            no
-                                                    </td>
-                                                    
-
-                                                </tr>
-                                        </tbody>
-                                    </table>
-                            </div>
-                            <div>
-                            </div>
-                            <div class="io-description">
-                                <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
-
-                            </div>
-                                <div class="io-description">
-                                    
-                                </div>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-        <table class="table table-sm table-bordered">
-            <tbody>
-                <tr>
-                    <td class="col-md-4">
-                        <a name="getAllClients"></a>
-                        <span class="name">
-                            <b>
-                            getAllClients
-                            </b>
-                            <a href="#getAllClients"><span class="fa fa-link"></span></a>
-                        </span>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="col-md-4">
-<code>getAllClients()</code>
-                    </td>
-                </tr>
-
-
-                        <tr>
-                            <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="29" class="link-to-prism">src/app/components/dashboard/dashboard.component.ts:29</a></div>
-                            </td>
-                        </tr>
-
-
-                <tr>
-                    <td class="col-md-4">
-
-                            <div class="io-description">
-                                <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
-
-                            </div>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-        <table class="table table-sm table-bordered">
-            <tbody>
-                <tr>
-                    <td class="col-md-4">
                         <a name="ngOnInit"></a>
                         <span class="name">
                             <b>
@@ -721,7 +612,7 @@
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="24" class="link-to-prism">src/app/components/dashboard/dashboard.component.ts:24</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="17" class="link-to-prism">src/app/components/client-dialog/client-dialog.component.ts:17</a></div>
                             </td>
                         </tr>
 
@@ -741,25 +632,25 @@
             <tbody>
                 <tr>
                     <td class="col-md-4">
-                        <a name="onClickNew"></a>
+                        <a name="onCancel"></a>
                         <span class="name">
                             <b>
-                            onClickNew
+                            onCancel
                             </b>
-                            <a href="#onClickNew"><span class="fa fa-link"></span></a>
+                            <a href="#onCancel"><span class="fa fa-link"></span></a>
                         </span>
                     </td>
                 </tr>
                 <tr>
                     <td class="col-md-4">
-<code>onClickNew()</code>
+<code>onCancel()</code>
                     </td>
                 </tr>
 
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="57" class="link-to-prism">src/app/components/dashboard/dashboard.component.ts:57</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="31" class="link-to-prism">src/app/components/client-dialog/client-dialog.component.ts:31</a></div>
                             </td>
                         </tr>
 
@@ -779,25 +670,25 @@
             <tbody>
                 <tr>
                     <td class="col-md-4">
-                        <a name="onRowClicked"></a>
+                        <a name="onNoClick"></a>
                         <span class="name">
                             <b>
-                            onRowClicked
+                            onNoClick
                             </b>
-                            <a href="#onRowClicked"><span class="fa fa-link"></span></a>
+                            <a href="#onNoClick"><span class="fa fa-link"></span></a>
                         </span>
                     </td>
                 </tr>
                 <tr>
                     <td class="col-md-4">
-<code>onRowClicked(row: )</code>
+<code>onNoClick()</code>
                     </td>
                 </tr>
 
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="43" class="link-to-prism">src/app/components/dashboard/dashboard.component.ts:43</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="27" class="link-to-prism">src/app/components/client-dialog/client-dialog.component.ts:27</a></div>
                             </td>
                         </tr>
 
@@ -806,36 +697,47 @@
                     <td class="col-md-4">
 
                             <div class="io-description">
-                                    <b>Parameters :</b>
-                                    <table class="params">
-                                        <thead>
-                                            <tr>
-                                                <td>Name</td>
-                                                <td>Optional</td>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                                <tr>
-                                                        <td>row</td>
-                                                    
-                                                    <td>
-                                                            no
-                                                    </td>
-                                                    
+                                <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
 
-                                                </tr>
-                                        </tbody>
-                                    </table>
                             </div>
-                            <div>
-                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="onSubmit"></a>
+                        <span class="name">
+                            <b>
+                            onSubmit
+                            </b>
+                            <a href="#onSubmit"><span class="fa fa-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+<code>onSubmit()</code>
+                    </td>
+                </tr>
+
+
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="35" class="link-to-prism">src/app/components/client-dialog/client-dialog.component.ts:35</a></div>
+                            </td>
+                        </tr>
+
+
+                <tr>
+                    <td class="col-md-4">
+
                             <div class="io-description">
                                 <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
 
                             </div>
-                                <div class="io-description">
-                                    
-                                </div>
                     </td>
                 </tr>
             </tbody>
@@ -851,30 +753,30 @@
             <tbody>
                 <tr>
                     <td class="col-md-4">
-                        <a name="clients"></a>
+                        <a name="client"></a>
                         <span class="name">
                             <b>
-                            clients
+                            client
                             </b>
-                            <a href="#clients"><span class="fa fa-link"></span></a>
+                            <a href="#client"><span class="fa fa-link"></span></a>
                         </span>
                     </td>
                 </tr>
                 <tr>
                     <td class="col-md-4">
-                        <code>clients:     <code><a href="../interfaces/Client.html" target="_self" >Client[]</a></code>
+                        <code>client:     <code><a href="../interfaces/Client.html" target="_self" >Client</a></code>
 </code>
                     </td>
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                            <i>Type : </i>    <code><a href="../interfaces/Client.html" target="_self" >Client[]</a></code>
+                            <i>Type : </i>    <code><a href="../interfaces/Client.html" target="_self" >Client</a></code>
 
                         </td>
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="14" class="link-to-prism">src/app/components/dashboard/dashboard.component.ts:14</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="15" class="link-to-prism">src/app/components/client-dialog/client-dialog.component.ts:15</a></div>
                             </td>
                         </tr>
 
@@ -885,64 +787,36 @@
             <tbody>
                 <tr>
                     <td class="col-md-4">
-                        <a name="dataSource"></a>
-                        <span class="name">
-                            <b>
-                            dataSource
-                            </b>
-                            <a href="#dataSource"><span class="fa fa-link"></span></a>
-                        </span>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="col-md-4">
-                        <code>dataSource:     <code></code>
-</code>
-                    </td>
-                </tr>
-                    <tr>
-                        <td class="col-md-4">
-                            <i>Default value : </i><code>new MatTableDataSource()</code>
-                        </td>
-                    </tr>
-                        <tr>
-                            <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="15" class="link-to-prism">src/app/components/dashboard/dashboard.component.ts:15</a></div>
-                            </td>
-                        </tr>
-
-
-            </tbody>
-        </table>
-        <table class="table table-sm table-bordered">
-            <tbody>
-                <tr>
-                    <td class="col-md-4">
-                        <a name="dialog"></a>
+                        <a name="data"></a>
                         <span class="name">
                             <b>
                                 <span class="modifier">Public</span>
-                            dialog
+                            data
                             </b>
-                            <a href="#dialog"><span class="fa fa-link"></span></a>
+                            <a href="#data"><span class="fa fa-link"></span></a>
                         </span>
                     </td>
                 </tr>
                 <tr>
                     <td class="col-md-4">
-                        <span class="modifier-icon fa fa-reset"></span><code>dialog:     <code>MatDialog</code>
+                        <span class="modifier-icon fa fa-reset"></span><code>data:     <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
 </code>
                     </td>
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                            <i>Type : </i>    <code>MatDialog</code>
+                            <i>Type : </i>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
 
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Decorators : </i><code>Inject</code>
                         </td>
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="20" class="link-to-prism">src/app/components/dashboard/dashboard.component.ts:20</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="25" class="link-to-prism">src/app/components/client-dialog/client-dialog.component.ts:25</a></div>
                             </td>
                         </tr>
 
@@ -953,35 +827,64 @@
             <tbody>
                 <tr>
                     <td class="col-md-4">
-                        <a name="displayedColumns"></a>
+                        <a name="dialogRef"></a>
                         <span class="name">
                             <b>
-                            displayedColumns
+                                <span class="modifier">Public</span>
+                            dialogRef
                             </b>
-                            <a href="#displayedColumns"><span class="fa fa-link"></span></a>
+                            <a href="#dialogRef"><span class="fa fa-link"></span></a>
                         </span>
                     </td>
                 </tr>
                 <tr>
                     <td class="col-md-4">
-                        <code>displayedColumns:     <code>string[]</code>
+                        <span class="modifier-icon fa fa-reset"></span><code>dialogRef:     <code><a href="../interfaces/Client.html" target="_self" >MatDialogRef&lt;ClientDialogComponent&gt;</a></code>
 </code>
                     </td>
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                            <i>Type : </i>    <code>string[]</code>
+                            <i>Type : </i>    <code><a href="../interfaces/Client.html" target="_self" >MatDialogRef&lt;ClientDialogComponent&gt;</a></code>
 
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="col-md-4">
-                            <i>Default value : </i><code>[&#x27;alias&#x27;, &#x27;companyName&#x27;, &#x27;appleCertificate&#x27;, &#x27;activationName&#x27;, &#x27;activationCode&#x27;, &#x27;profileFolder&#x27;, &#x27;active&#x27;]</code>
                         </td>
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="16" class="link-to-prism">src/app/components/dashboard/dashboard.component.ts:16</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="23" class="link-to-prism">src/app/components/client-dialog/client-dialog.component.ts:23</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="isNew"></a>
+                        <span class="name">
+                            <b>
+                            isNew
+                            </b>
+                            <a href="#isNew"><span class="fa fa-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <code>isNew:     <code></code>
+</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>false</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="14" class="link-to-prism">src/app/components/client-dialog/client-dialog.component.ts:14</a></div>
                             </td>
                         </tr>
 
@@ -994,150 +897,130 @@
 
 
     <div class="tab-pane fade  tab-source-code" id="c-source">
-        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, OnInit, ChangeDetectorRef } from &#x27;@angular/core&#x27;;
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, OnInit, Inject } from &#x27;@angular/core&#x27;;
+import { MatDialogRef, MAT_DIALOG_DATA } from &#x27;@angular/material&#x27;;
 import { ClientService, Client } from &#x27;../../services/client.service&#x27;;
-import { MatTableDataSource, MatDialog, Sort } from &#x27;@angular/material&#x27;;
-import { ClientDialogComponent } from &#x27;../client-dialog/client-dialog.component&#x27;;
+import { Observable } from &#x27;rxjs&#x27;;
 
 
 @Component({
-  selector: &#x27;app-dashboard&#x27;,
-  templateUrl: &#x27;./dashboard.component.html&#x27;,
-  styleUrls: [&#x27;./dashboard.component.css&#x27;]
+  selector: &#x27;app-client-dialog&#x27;,
+  templateUrl: &#x27;./client-dialog.component.html&#x27;,
+  styleUrls: [&#x27;./client-dialog.component.css&#x27;]
 })
-export class DashboardComponent implements OnInit {
+export class ClientDialogComponent implements OnInit {
 
-  clients: Client[];
-  dataSource &#x3D; new MatTableDataSource();
-  displayedColumns: string[] &#x3D; [&#x27;alias&#x27;, &#x27;companyName&#x27;, &#x27;appleCertificate&#x27;, &#x27;activationName&#x27;, &#x27;activationCode&#x27;, &#x27;profileFolder&#x27;, &#x27;active&#x27;];
-
-  constructor(
-    private ClientService: ClientService,
-    public dialog: MatDialog,
-    private cdr: ChangeDetectorRef
-  ) {}
+  isNew &#x3D; false;
+  client: Client;
 
   ngOnInit() {
-    this.getAllClients();
-  }
-  
-  // OnInit GET Request
-  getAllClients() {
-    this.ClientService.getAllClients().subscribe(clients &#x3D;&gt; {
-      this.clients &#x3D; clients;
-      this.dataSource &#x3D; new MatTableDataSource(this.clients);
-    });
+    this.isNew &#x3D; this.data.isNew;
+    this.client &#x3D; this.data.client;
   }
 
+  constructor(
+    public dialogRef: MatDialogRef&lt;ClientDialogComponent&gt;,
+    private ClientService: ClientService,
+    @Inject(MAT_DIALOG_DATA) public data: any) {}
 
-  // Filter
-  applyFilter(filterValue: string) {
-    this.dataSource.filter &#x3D; filterValue.trim().toLowerCase();
+  onNoClick(): void {
+    this.dialogRef.close();
   }
 
-  // Click Functions
-  onRowClicked(row) {
-    const dialogRef &#x3D; this.dialog.open(ClientDialogComponent, {
-      data: {client: { ...row }, isNew: false}
-    });
-    dialogRef.afterClosed().subscribe(modalResult &#x3D;&gt; {
-      if (modalResult) {
-        modalResult.obs$.subscribe(clients &#x3D;&gt; {
-          row &#x3D; Object.assign(row, modalResult.row);
-          this.cdr.detectChanges();
-        });
-      }
-    });
+  onCancel(): void {
+    this.dialogRef.close();
   }
 
-  onClickNew() {
-    let row &#x3D; {};
-    const dialogRef &#x3D; this.dialog.open(ClientDialogComponent, {
-      data: {client: row, isNew: true}
-    });
-    dialogRef.afterClosed().subscribe(clients$ &#x3D;&gt; {
-      if (clients$) {
-        clients$.subscribe(clients &#x3D;&gt; {
-          this.clients &#x3D; clients;
-          this.cdr.detectChanges();
-        });
-      }
-    });
+  onSubmit(): void {
+    let updated_list: any;
+    if (!this.isNew) {
+      updated_list &#x3D; this.ClientService.updateClient(this.client);
+    } else {
+      updated_list &#x3D; this.ClientService.newClient(this.client);
+    }
+    this.dialogRef.close({ obs$: updated_list, row: this.client});
   }
 
 }
-
 </code></pre>
     </div>
 
     <div class="tab-pane fade " id="c-templateData">
-        <pre class="line-numbers"><code class="language-html">&lt;mat-toolbar&gt;
-  &lt;mat-form-field class&#x3D;&quot;menu-form&quot;&gt;
-    &lt;input matInput (keyup)&#x3D;&quot;applyFilter($event.target.value)&quot; placeholder&#x3D;&quot;Filter&quot;&gt;
+        <pre class="line-numbers"><code class="language-html">&lt;form class&#x3D;&quot;client-form&quot; #clientForm&#x3D;&quot;ngForm&quot;&gt;
+
+  &lt;mat-form-field class&#x3D;&quot;dialog-full-width&quot;&gt;
+    &lt;input matInput placeholder&#x3D;&quot;id&quot; disabled required value&#x3D;&quot;{{client.id}}&quot;&gt;
   &lt;/mat-form-field&gt;
-  &lt;button mat-raised-button color&#x3D;&quot;primary&quot; class&#x3D;&quot;menu-button&quot; 
-  (click)&#x3D;&quot;onClickNew()&quot;&gt;Create New&lt;/button&gt;
-&lt;/mat-toolbar&gt;
 
-&lt;table mat-table [dataSource]&#x3D;&quot;sortedData ? sortedData : dataSource&quot; matSort (matSortChange)&#x3D;&quot;sortData($event)&quot; matSortActive&#x3D;&quot;alias&quot; matSortDirection&#x3D;&quot;asc&quot; class&#x3D;&quot;mat-elevation-z8&quot;&gt;
+  &lt;mat-form-field class&#x3D;&quot;dialog-full-width&quot;&gt;
+    &lt;input matInput required 
+      placeholder&#x3D;&quot;DB Alias&quot; 
+      [(ngModel)]&#x3D;&quot;client.Alias&quot; name&#x3D;&quot;alias&quot;
+      #alias&#x3D;&quot;ngModel&quot;
+      value&#x3D;&quot;{{client.Alias}}&quot;&gt;
+  &lt;/mat-form-field&gt;
 
-  &lt;!-- &lt;ng-container matColumnDef&#x3D;&quot;id&quot;&gt;
-    &lt;mat-header-cell *matHeaderCellDef &gt; id &lt;/mat-header-cell&gt;
-    &lt;mat-cell *matCellDef&#x3D;&quot;let client&quot;&gt; {{client.id}} &lt;/mat-cell&gt;
-  &lt;/ng-container&gt; --&gt;
+  &lt;mat-form-field class&#x3D;&quot;dialog-full-width&quot;&gt;
+      &lt;input matInput required 
+        placeholder&#x3D;&quot;Company Name&quot; 
+        [(ngModel)]&#x3D;&quot;client.CompanyName&quot; name&#x3D;&quot;companyName&quot;
+        #companyName&#x3D;&quot;ngModel&quot;
+        value&#x3D;&quot;{{client.CompanyName}}&quot;&gt;
+  &lt;/mat-form-field&gt;
+    
+  &lt;mat-form-field class&#x3D;&quot;dialog-full-width&quot;&gt;
+      &lt;input matInput required
+        placeholder&#x3D;&quot;Apple Certificate&quot;  
+        [(ngModel)]&#x3D;&quot;client.AppleCertificate&quot; name&#x3D;&quot;appleCertificate&quot;
+        #appleCertificate&#x3D;&quot;ngModel&quot;
+        value&#x3D;&quot;{{client.AppleCertificate}}&quot;&gt;
+  &lt;/mat-form-field&gt;
 
+  &lt;mat-form-field class&#x3D;&quot;dialog-full-width&quot;&gt;
+      &lt;input matInput required 
+        placeholder&#x3D;&quot;Activation Name&quot; 
+        [(ngModel)]&#x3D;&quot;client.ActivationName&quot; name&#x3D;&quot;activationName&quot;
+        #activationName&#x3D;&quot;ngModel&quot; 
+        value&#x3D;&quot;{{client.ActivationName}}&quot;&gt;
+  &lt;/mat-form-field&gt;
+
+  &lt;mat-form-field class&#x3D;&quot;dialog-full-width&quot;&gt;
+      &lt;input matInput required
+        placeholder&#x3D;&quot;Activation Code&quot;  
+        [(ngModel)]&#x3D;&quot;client.ActivationCode&quot; name&#x3D;&quot;activationCode&quot;
+        #activationCode&#x3D;&quot;ngModel&quot; 
+        value&#x3D;&quot;{{client.ActivationCode}}&quot;&gt;
+  &lt;/mat-form-field&gt;
+
+  &lt;mat-form-field class&#x3D;&quot;dialog-full-width&quot;&gt;
+      &lt;input matInput 
+        placeholder&#x3D;&quot;Encrypted Name&quot; 
+        value&#x3D;&quot;{{client.EncryptedName}}&quot;&gt;
+  &lt;/mat-form-field&gt;
+
+  &lt;mat-form-field class&#x3D;&quot;dialog-full-width&quot;&gt;
+      &lt;input matInput 
+        placeholder&#x3D;&quot;Encrypted Code&quot; 
+        value&#x3D;&quot;{{client.EncryptedCode}}&quot;&gt;
+  &lt;/mat-form-field&gt;
+
+  &lt;mat-form-field class&#x3D;&quot;dialog-full-width&quot;&gt;
+      &lt;input matInput required 
+        placeholder&#x3D;&quot;Profile Folder&quot;
+        [(ngModel)]&#x3D;&quot;client.ProfileFolder&quot; name&#x3D;&quot;profileFolder&quot;
+        #profileFolder&#x3D;&quot;ngModel&quot;  
+        [value]&#x3D;&quot;client.ProfileFolder&quot;&gt;
+  &lt;/mat-form-field&gt;
+
+
+  &lt;mat-checkbox [(ngModel)]&#x3D;&quot;client.Active&quot; name&#x3D;&quot;active&quot;&gt;Active&lt;/mat-checkbox&gt;
+
+
+  &lt;button mat-raised-button color&#x3D;&quot;primary&quot; [disabled]&#x3D;&quot;!clientForm.form.valid&quot; (click)&#x3D;&quot;onSubmit()&quot;&gt;Submit&lt;/button&gt;
+  &lt;button mat-button mat-dialog-close&gt;Cancel&lt;/button&gt;
   
+&lt;/form&gt;
 
-  &lt;ng-container matColumnDef&#x3D;&quot;alias&quot;&gt;
-    &lt;mat-header-cell *matHeaderCellDef&gt; Alias &lt;/mat-header-cell&gt;
-    &lt;mat-cell *matCellDef&#x3D;&quot;let client&quot;&gt; {{client.Alias}} &lt;/mat-cell&gt;
-  &lt;/ng-container&gt;
-
-  &lt;ng-container matColumnDef&#x3D;&quot;companyName&quot;&gt;
-      &lt;mat-header-cell *matHeaderCellDef&gt; Company Name &lt;/mat-header-cell&gt;
-      &lt;mat-cell *matCellDef&#x3D;&quot;let client&quot;&gt; {{client.CompanyName}} &lt;/mat-cell&gt;
-    &lt;/ng-container&gt;
-
-  &lt;ng-container matColumnDef&#x3D;&quot;appleCertificate&quot;&gt;
-    &lt;mat-header-cell *matHeaderCellDef&gt; Apple Certificate &lt;/mat-header-cell&gt;
-    &lt;mat-cell *matCellDef&#x3D;&quot;let client&quot;&gt; {{client.AppleCertificate}} &lt;/mat-cell&gt;
-  &lt;/ng-container&gt;
-
-  &lt;ng-container matColumnDef&#x3D;&quot;activationName&quot;&gt;
-    &lt;mat-header-cell *matHeaderCellDef&gt; Activation Name &lt;/mat-header-cell&gt;
-    &lt;mat-cell *matCellDef&#x3D;&quot;let client&quot;&gt; {{client.ActivationName}} &lt;/mat-cell&gt;
-  &lt;/ng-container&gt;
-
-  &lt;ng-container matColumnDef&#x3D;&quot;activationCode&quot;&gt;
-    &lt;mat-header-cell *matHeaderCellDef&gt; Activation Code &lt;/mat-header-cell&gt;
-    &lt;mat-cell *matCellDef&#x3D;&quot;let client&quot;&gt; {{client.ActivationCode}} &lt;/mat-cell&gt;
-  &lt;/ng-container&gt;
-
-  &lt;!-- &lt;ng-container matColumnDef&#x3D;&quot;encryptedName&quot;&gt;
-    &lt;mat-header-cell *matHeaderCellDef&gt; Encrypted Name &lt;/mat-header-cell&gt;
-    &lt;mat-cell *matCellDef&#x3D;&quot;let client&quot;&gt; {{client.EncryptedName}} &lt;/mat-cell&gt;
-  &lt;/ng-container&gt;
-
-  &lt;ng-container matColumnDef&#x3D;&quot;encryptedCode&quot;&gt;
-    &lt;mat-header-cell *matHeaderCellDef&gt; Encrypted Code &lt;/mat-header-cell&gt;
-    &lt;mat-cell *matCellDef&#x3D;&quot;let client&quot;&gt; {{client.EncryptedCode}} &lt;/mat-cell&gt;
-  &lt;/ng-container&gt; --&gt;
-
-  &lt;ng-container matColumnDef&#x3D;&quot;profileFolder&quot;&gt;
-    &lt;mat-header-cell *matHeaderCellDef&gt; Profile Folder &lt;/mat-header-cell&gt;
-    &lt;mat-cell *matCellDef&#x3D;&quot;let client&quot;&gt; {{client.ProfileFolder}} &lt;/mat-cell&gt;
-  &lt;/ng-container&gt;
-
-  &lt;ng-container matColumnDef&#x3D;&quot;active&quot;&gt;
-    &lt;mat-header-cell *matHeaderCellDef&gt; Active &lt;/mat-header-cell&gt;
-    &lt;mat-cell *matCellDef&#x3D;&quot;let client&quot;&gt; {{client.Active}} &lt;/mat-cell&gt;
-  &lt;/ng-container&gt;
-
-  &lt;mat-header-row *matHeaderRowDef&#x3D;&quot;displayedColumns&quot;&gt;&lt;/mat-header-row&gt;
-  &lt;mat-row *matRowDef&#x3D;&quot;let row; columns: displayedColumns;&quot;
-    (click)&#x3D;&quot;onRowClicked(row)&quot;&gt;
-  &lt;/mat-row&gt;
-&lt;/table&gt;
 </code></pre>
     </div>
 
@@ -1166,10 +1049,10 @@ export class DashboardComponent implements OnInit {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><mat-toolbar>  <mat-form-field class="menu-form">    <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">  </mat-form-field>  <button mat-raised-button color="primary" class="menu-button"   (click)="onClickNew()">Create New</button></mat-toolbar><table mat-table [dataSource]="sortedData ? sortedData : dataSource" matSort (matSortChange)="sortData($event)" matSortActive="alias" matSortDirection="asc" class="mat-elevation-z8">  <!-- <ng-container matColumnDef="id">    <mat-header-cell *matHeaderCellDef > id </mat-header-cell>    <mat-cell *matCellDef="let client"> {{client.id}} </mat-cell>  </ng-container> -->    <ng-container matColumnDef="alias">    <mat-header-cell *matHeaderCellDef> Alias </mat-header-cell>    <mat-cell *matCellDef="let client"> {{client.Alias}} </mat-cell>  </ng-container>  <ng-container matColumnDef="companyName">      <mat-header-cell *matHeaderCellDef> Company Name </mat-header-cell>      <mat-cell *matCellDef="let client"> {{client.CompanyName}} </mat-cell>    </ng-container>  <ng-container matColumnDef="appleCertificate">    <mat-header-cell *matHeaderCellDef> Apple Certificate </mat-header-cell>    <mat-cell *matCellDef="let client"> {{client.AppleCertificate}} </mat-cell>  </ng-container>  <ng-container matColumnDef="activationName">    <mat-header-cell *matHeaderCellDef> Activation Name </mat-header-cell>    <mat-cell *matCellDef="let client"> {{client.ActivationName}} </mat-cell>  </ng-container>  <ng-container matColumnDef="activationCode">    <mat-header-cell *matHeaderCellDef> Activation Code </mat-header-cell>    <mat-cell *matCellDef="let client"> {{client.ActivationCode}} </mat-cell>  </ng-container>  <!-- <ng-container matColumnDef="encryptedName">    <mat-header-cell *matHeaderCellDef> Encrypted Name </mat-header-cell>    <mat-cell *matCellDef="let client"> {{client.EncryptedName}} </mat-cell>  </ng-container>  <ng-container matColumnDef="encryptedCode">    <mat-header-cell *matHeaderCellDef> Encrypted Code </mat-header-cell>    <mat-cell *matCellDef="let client"> {{client.EncryptedCode}} </mat-cell>  </ng-container> -->  <ng-container matColumnDef="profileFolder">    <mat-header-cell *matHeaderCellDef> Profile Folder </mat-header-cell>    <mat-cell *matCellDef="let client"> {{client.ProfileFolder}} </mat-cell>  </ng-container>  <ng-container matColumnDef="active">    <mat-header-cell *matHeaderCellDef> Active </mat-header-cell>    <mat-cell *matCellDef="let client"> {{client.Active}} </mat-cell>  </ng-container>  <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>  <mat-row *matRowDef="let row; columns: displayedColumns;"    (click)="onRowClicked(row)">  </mat-row></table></div>'
+        var COMPONENT_TEMPLATE = '<div><form class="client-form" #clientForm="ngForm">  <mat-form-field class="dialog-full-width">    <input matInput placeholder="id" disabled required value="{{client.id}}">  </mat-form-field>  <mat-form-field class="dialog-full-width">    <input matInput required       placeholder="DB Alias"       [(ngModel)]="client.Alias" name="alias"      #alias="ngModel"      value="{{client.Alias}}">  </mat-form-field>  <mat-form-field class="dialog-full-width">      <input matInput required         placeholder="Company Name"         [(ngModel)]="client.CompanyName" name="companyName"        #companyName="ngModel"        value="{{client.CompanyName}}">  </mat-form-field>      <mat-form-field class="dialog-full-width">      <input matInput required        placeholder="Apple Certificate"          [(ngModel)]="client.AppleCertificate" name="appleCertificate"        #appleCertificate="ngModel"        value="{{client.AppleCertificate}}">  </mat-form-field>  <mat-form-field class="dialog-full-width">      <input matInput required         placeholder="Activation Name"         [(ngModel)]="client.ActivationName" name="activationName"        #activationName="ngModel"         value="{{client.ActivationName}}">  </mat-form-field>  <mat-form-field class="dialog-full-width">      <input matInput required        placeholder="Activation Code"          [(ngModel)]="client.ActivationCode" name="activationCode"        #activationCode="ngModel"         value="{{client.ActivationCode}}">  </mat-form-field>  <mat-form-field class="dialog-full-width">      <input matInput         placeholder="Encrypted Name"         value="{{client.EncryptedName}}">  </mat-form-field>  <mat-form-field class="dialog-full-width">      <input matInput         placeholder="Encrypted Code"         value="{{client.EncryptedCode}}">  </mat-form-field>  <mat-form-field class="dialog-full-width">      <input matInput required         placeholder="Profile Folder"        [(ngModel)]="client.ProfileFolder" name="profileFolder"        #profileFolder="ngModel"          [value]="client.ProfileFolder">  </mat-form-field>  <mat-checkbox [(ngModel)]="client.Active" name="active">Active</mat-checkbox>  <button mat-raised-button color="primary" [disabled]="!clientForm.form.valid" (click)="onSubmit()">Submit</button>  <button mat-button mat-dialog-close>Cancel</button>  </form></div>'
     var COMPONENTS = [{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'ClientDialogComponent', 'selector': 'app-client-dialog'},{'name': 'DashboardComponent', 'selector': 'app-dashboard'}];
     var DIRECTIVES = [];
-    var ACTUAL_COMPONENT = {'name': 'DashboardComponent'};
+    var ACTUAL_COMPONENT = {'name': 'ClientDialogComponent'};
 </script>
 <script src="../js/tree.js"></script>
 
@@ -1209,7 +1092,7 @@ export class DashboardComponent implements OnInit {
         <script>
             var COMPODOC_CURRENT_PAGE_DEPTH = 1;
             var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
-            var COMPODOC_CURRENT_PAGE_URL = 'DashboardComponent.html';
+            var COMPODOC_CURRENT_PAGE_URL = 'ClientDialogComponent.html';
         </script>
 
        <script src="../js/search/search.js"></script>
